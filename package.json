@@ -1,0 +1,9 @@
+{
+  "name": "helloai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A pretty simple dash style game. Pure HTML/CSS/vanilla JS, zero dependencies.",
+  "scripts": {
+    "dev": "node server.js"
+  }
+}

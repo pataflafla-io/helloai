@@ -1,0 +1,174 @@
+/* WHITE DASH — greyscale, flat, crunchy */
+
+:root {
+  --bg: #f2f2f0;
+  --ink: #161616;
+  --grey: #6d6d69;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--mono);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+#game {
+  position: fixed;
+  inset: 0;
+  display: block;
+  touch-action: none; /* no double-tap zoom while playing */
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+}
+
+/* ---------- HUD ---------- */
+#hud {
+  position: fixed;
+  top: 28px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  pointer-events: none;
+}
+
+#score {
+  font-size: clamp(44px, 8vw, 76px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.06em;
+}
+
+#score.pop { animation: pop 0.18s ease-out; }
+
+@keyframes pop {
+  40% { transform: scale(1.22); }
+}
+
+#best {
+  margin-top: 6px;
+  font-size: 13px;
+  letter-spacing: 0.25em;
+  color: var(--grey);
+}
+
+/* ---------- Sound toggle ---------- */
+#sound {
+  position: fixed;
+  top: 22px;
+  right: 22px;
+  z-index: 10;
+  font: 600 11px/1 var(--mono);
+  letter-spacing: 0.18em;
+  padding: 9px 13px;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+#sound:hover { background: var(--ink); color: var(--bg); }
+
+/* ---------- Screens (start / game over) ---------- */
+#screen {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  pointer-events: none; /* clicks pass through to the game input */
+}
+
+#screen .card { padding: 0 24px; animation: rise 0.35s ease-out both; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  font-size: clamp(34px, 7vw, 64px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.logo {
+  width: 0.72em;
+  height: 0.72em;
+  background: var(--ink);
+  animation: hop 1.2s cubic-bezier(0.3, 0, 0.25, 1) infinite;
+}
+
+@keyframes hop {
+  0%, 100% { transform: translateY(0); }
+  40%      { transform: translateY(-0.22em); }
+  62%      { transform: translateY(0) scale(1.12, 0.88); } /* little landing squash */
+}
+
+.rules {
+  margin-top: 20px;
+  font-size: 13px;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+  color: var(--grey);
+}
+
+.start {
+  margin-top: 30px;
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  animation: blink 1.15s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.25; }
+}
+
+.over-label {
+  font-size: 14px;
+  letter-spacing: 0.32em;
+  color: var(--grey);
+}
+
+.final {
+  margin-top: 6px;
+  font-size: clamp(64px, 15vw, 130px);
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.best-line {
+  margin-top: 12px;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--grey);
+}
+
+.newbest {
+  display: inline-block;
+  padding: 7px 15px;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  color: var(--ink);
+  font-weight: 700;
+  animation: pulse 0.65s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  to { transform: scale(1.09); }
+}
