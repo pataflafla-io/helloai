@@ -6,6 +6,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
+
 const ROOT = __dirname;
 const PORT = process.env.PORT || 5173;
 
@@ -40,5 +41,5 @@ http
     });
   })
   .listen(PORT, () => {
-    console.log(`HELLO AI running at http://localhost:${PORT}`);
+    console.log(`Running at http://localhost:${PORT}`);
   });

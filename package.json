@@ -4,6 +4,6 @@
   "private": true,
   "description": "A pretty simple dash style game. Pure HTML/CSS/vanilla JS, zero dependencies.",
   "scripts": {
-    "dev": "node server.js"
+    "dev": "node logo.js && node server.js"
   }
 }
